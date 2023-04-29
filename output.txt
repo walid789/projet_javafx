@@ -1,0 +1,20 @@
+1,saluts,heloo,nom,nom en francis ,hi every one 
+10,aller,go,verbe ,aller au cinéma,go to cinema  
+11,voir,watch,verbe ,voir cette voiture ,watch this car 
+12,amies,friends,nom,je veut voir mes amies ,i want to see my frineds 
+13,jouer,play,verbe,je ne peut pas jouer aujourd'hui,i can't play today 
+14,travail,work,verbe,je travaille tous le jour ,i work all the day 
+20,salut,heloo,nom,nom en francis ,hi every one 
+1,saluts,heloo,nom,nom en francis ,hi every one 
+10,aller,go,verbe ,aller au cinéma,go to cinema  
+11,voir,watch,verbe ,voir cette voiture ,watch this car 
+12,amies,friends,nom,je veut voir mes amies ,i want to see my frineds 
+13,jouer,play,verbe,je ne peut pas jouer aujourd'hui,i can't play today 
+14,travail,work,verbe,je travaille tous le jour ,i work all the day 
+20,salut,heloo,nom,nom en francis ,hi every one 
+1,saluts,heloo,nom,nom en francis ,hi every one 
+10,aller,go,verbe ,aller au cinéma,go to cinema  
+11,voir,watch,verbe ,voir cette voiture ,watch this car 
+12,amies,friends,nom,je veut voir mes amies ,i want to see my frineds 
+13,jouer,play,verbe,je ne peut pas jouer aujourd'hui,i can't play today 
+14,travail,work,verbe,je travaille tous le jour ,i work all the day 
