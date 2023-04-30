@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-
 import java.sql.*;
 
 public class UpdateInter extends Stage {
@@ -21,8 +20,9 @@ public class UpdateInter extends Stage {
                 // Create labels, textfields, and button
                 Label label0 = new Label("the word in french");
                 TextField textField0 = new TextField();
+                Label label7 = new Label("the expression in french");
+                TextField textField6 = new TextField();
                 Button button0 = new Button("Search");
-
 
                 Label label1 = new Label("Word In French :");
                 Label label2 = new Label("Word In English :");
@@ -41,7 +41,7 @@ public class UpdateInter extends Stage {
                 vBox.setPadding(new Insets(10));
                 vBox.setSpacing(10);
                 vBox.setAlignment(Pos.TOP_CENTER);
-                vBox.getChildren().addAll(label0,textField0,button0,label1, textField1, label2, textField2, label3, textField3, label4, textField4, label5, textField5, button);
+                vBox.getChildren().addAll(label0,textField0,label7,textField6,button0,label1, textField1, label2, textField2, label3, textField3, label4, textField4, label5, textField5, button);
 
         button0.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -52,10 +52,11 @@ public class UpdateInter extends Stage {
                             "jdbc:mysql://localhost:3306/test", "root", ""
                     );
                     Statement statement = connection.createStatement();
-                    String req = "select * from dictionnaire where word_fr= ?";
+                    String req = "select * from dictionnaire where word_fr= ? and exmple_fr=?";
 
                     PreparedStatement stmt = connection.prepareStatement(req);
                     stmt.setString(1, textField0.getText());
+                    stmt.setString(2, textField6.getText());
                     ResultSet rset = stmt.executeQuery();
                     while (rset.next()) {
                         textField1.setText(rset.getString(2));
@@ -89,6 +90,8 @@ public class UpdateInter extends Stage {
                     stmt.setString(5, textField5.getText());
                     stmt.setInt(6, id);
                     int rows = stmt.executeUpdate();
+                    AdminInterface ad=new AdminInterface();
+                    close();
                     }
                 catch (Exception e1) {
                     System.out.println(e1);

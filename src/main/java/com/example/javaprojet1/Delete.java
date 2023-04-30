@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -19,8 +20,10 @@ public class Delete extends Stage {
 
     public Delete(){
 
-        Label label = new Label("Enter the word in english:");
+        Label label = new Label("Enter the word in french:");
         TextField textField = new TextField();
+        Label label1 = new Label("Enter the exmple in french:");
+        TextField textField1 = new TextField();
         Button button = new Button("Delete");
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -30,12 +33,23 @@ public class Delete extends Stage {
                     Connection connection = DriverManager.getConnection(
                             "jdbc:mysql://localhost:3306/test", "root", ""
                     );
-                    String sql = "DELETE FROM dictionnaire WHERE  word_eng=?";
+                    String sql = "DELETE FROM dictionnaire WHERE  word_fr=? and exmple_fr=?";
                     PreparedStatement stmt = connection.prepareStatement(sql);
                     stmt.setString(1, textField.getText());
+                    stmt.setString(2, textField1.getText());
                     int rows = stmt.executeUpdate();
                     if (rows==1){
-                        System.out.println("succes");
+                        AdminInterface ad=new AdminInterface();
+                        close();
+                    }
+                    else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erreur");
+                        alert.setHeaderText(null);
+                        alert.setContentText("word not found");
+                        alert.showAndWait();
+                        textField.setText("");
+                        textField1.setText("");
                     }
 
                 } catch (Exception e1) {
@@ -48,7 +62,7 @@ public class Delete extends Stage {
         vBox.setPadding(new Insets(10));
         vBox.setSpacing(10);
         vBox.setAlignment(Pos.TOP_CENTER);
-        vBox.getChildren().addAll(label, textField, button);
+        vBox.getChildren().addAll(label, textField,label1,textField1, button);
 
         // Create scene and set it on the stage
         Scene scene = new Scene(vBox, 300, 250);
